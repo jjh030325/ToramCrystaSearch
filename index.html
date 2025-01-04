@@ -51,12 +51,19 @@
       <!-- 옵션 종류 선택 -->
       <label for="optionType">옵션 종류:</label>
       <select id="optionType">
-        <option value="attack">공격력</option>
-        <option value="defense">방어력</option>
-        <option value="hp">HP</option>
-        <option value="mp">MP</option>
-        <option value="critical">크리티컬</option>
-        <!-- 추가 옵션을 여기에 넣을 수 있습니다 -->
+        <option value="공격MP회복">공격MP회복</option>
+        <option value="배리어속도%">배리어속도%</option>
+        <option value="물내성%">물내성%</option>
+        <option value="최대MP">최대MP</option>
+        <option value="ATK%">ATK%</option>
+        <option value="발도공격%">발도공격%</option>
+        <option value="무내성%">무내성%</option>
+        <option value="Guard회복%">Guard회복%</option>
+        <option value="물리내성%">물리내성%</option>
+        <option value="최대HP%">최대HP%</option>
+        <option value="Avoid회복%">Avoid회복%</option>
+        <option value="마법내성%">마법내성%</option>
+        <option value="MATK%">MATK%</option>
       </select>
 
       <!-- 기호 선택 -->
@@ -118,6 +125,11 @@
       const selectedCategories = Array.from(document.querySelectorAll('.checkbox-group input:checked'))
         .map(input => input.value);
 
+      // 옵션 값과 기호 가져오기
+      const optionType = document.getElementById('optionType').value;
+      const symbol = document.getElementById('symbol').value;
+      const value = document.getElementById('valueInput').value;
+
       // 여러 개의 JSON 파일을 가져오는 Promise 배열 생성
       const fetchPromises = selectedCategories.map(category => {
         const jsonFilePath = getJsonFilePath(category);
@@ -140,9 +152,34 @@
           const mergedData = results.flatMap(result => result.data);
 
           // 필터링 (이름 검색)
-          const filteredData = mergedData.filter(item =>
-            (nameQuery === "" || item.name.toLowerCase().includes(nameQuery))
-          );
+          const filteredData = mergedData.filter(item => {
+            const optionMatches = item.option.split('&').some(option => {
+              const [optionName, optionValue] = option.split('+');
+              if (optionName === optionType) {
+                const numberValue = parseFloat(optionValue);
+                const comparisonValue = parseFloat(value);
+
+                // 기호에 맞는 비교 연산 수행
+                switch (symbol) {
+                  case '=':
+                    return numberValue === comparisonValue;
+                  case '>':
+                    return numberValue > comparisonValue;
+                  case '<':
+                    return numberValue < comparisonValue;
+                  case '>=':
+                    return numberValue >= comparisonValue;
+                  case '<=':
+                    return numberValue <= comparisonValue;
+                  default:
+                    return false;
+                }
+              }
+              return false;
+            });
+
+            return (nameQuery === "" || item.name.toLowerCase().includes(nameQuery)) && optionMatches;
+          });
 
           // 결과 출력
           const resultsDiv = document.getElementById('searchResults');
