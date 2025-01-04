@@ -4,101 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>토람 온라인 크리스타 검색</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-      background-color: #f9f9f9;
-    }
-    h1 {
-      text-align: center;
-      color: #4CAF50;
-      margin-bottom: 20px;
-    }
-    .search-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-    }
-    .checkbox-group label {
-      padding: 5px 10px;
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .checkbox-group input {
-      display: none;
-    }
-    .checkbox-group input:checked + label {
-      background: #4CAF50;
-      color: white;
-    }
-    input[type="text"] {
-      padding: 8px 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-      width: 250px;
-    }
-    button {
-      padding: 10px 20px;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background: #45a049;
-    }
-    #searchResults {
-      margin-top: 20px;
-      width: 90%;
-      max-width: 600px;
-      height: 300px;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background: #fafafa;
-      padding: 10px;
-    }
-    .crysta-item {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
-    }
-    .crysta-item:last-child {
-      border-bottom: none;
-    }
-    .crysta-item h3 {
-      margin: 0 0 5px;
-      color: #333;
-    }
-    .crysta-item p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
-    }
-    .crysta-item img {
-      max-width: 100px;
-      margin-top: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>토람 온라인 크리스타 검색</h1>
@@ -139,6 +45,34 @@
       <input type="checkbox" id="enhanced_ring" value="enhanced_ring">
       <label for="enhanced_ring">반지 강화</label>
     </div>
+
+    <!-- 옵션 검색 -->
+    <div class="option-search">
+      <!-- 옵션 종류 선택 -->
+      <label for="optionType">옵션 종류:</label>
+      <select id="optionType">
+        <option value="attack">공격력</option>
+        <option value="defense">방어력</option>
+        <option value="hp">HP</option>
+        <option value="mp">MP</option>
+        <option value="critical">크리티컬</option>
+        <!-- 추가 옵션을 여기에 넣을 수 있습니다 -->
+      </select>
+
+      <!-- 기호 선택 -->
+      <label for="symbol">기호:</label>
+      <select id="symbol">
+        <option value="=">=</option>
+        <option value=">">></option>
+        <option value="<"><</option>
+        <option value=">=">>=</option>
+        <option value="<="><=</option>
+      </select>
+
+      <!-- 값 입력 -->
+      <label for="valueInput">값:</label>
+      <input type="number" id="valueInput" placeholder="값을 입력하세요">
+    </div>
   </div>
 
   <!-- 검색 버튼 -->
@@ -149,86 +83,86 @@
 
   <script>
     // 카테고리별 이미지 매핑
-const imageMap = {
-  normal: 'CrystaImg/normal.png',
-  enhanced_normal: 'CrystaImg/enhanced_normal.png',
-  weapon: 'CrystaImg/weapon.png',
-  enhanced_weapon: 'CrystaImg/enhanced_weapon.png',
-  armor: 'CrystaImg/armor.png',
-  enhanced_armor: 'CrystaImg/enhanced_armor.png',
-  hat: 'CrystaImg/hat.png',
-  enhanced_hat: 'CrystaImg/enhanced_hat.png',
-  ring: 'CrystaImg/ring.png',
-  enhanced_ring: 'CrystaImg/enhanced_ring.png'
-};
+    const imageMap = {
+      normal: 'CrystaImg/normal.png',
+      enhanced_normal: 'CrystaImg/enhanced_normal.png',
+      weapon: 'CrystaImg/weapon.png',
+      enhanced_weapon: 'CrystaImg/enhanced_weapon.png',
+      armor: 'CrystaImg/armor.png',
+      enhanced_armor: 'CrystaImg/enhanced_armor.png',
+      hat: 'CrystaImg/hat.png',
+      enhanced_hat: 'CrystaImg/enhanced_hat.png',
+      ring: 'CrystaImg/ring.png',
+      enhanced_ring: 'CrystaImg/enhanced_ring.png'
+    };
 
-// 카테고리별 JSON 파일 경로 설정
-function getJsonFilePath(category) {
-  const categoryMap = {
-    normal: 'CrystaData/normal.json',
-    weapon: 'CrystaData/weapon.json',
-    armor: 'CrystaData/armor.json',
-    enhanced_normal: 'CrystaData/enhanced_normal.json',
-    enhanced_weapon: 'CrystaData/enhanced_weapon.json',
-    enhanced_armor: 'CrystaData/enhanced_armor.json',
-    hat: 'CrystaData/hat.json',
-    enhanced_hat: 'CrystaData/enhanced_hat.json',
-    ring: 'CrystaData/ring.json',
-    enhanced_ring: 'CrystaData/enhanced_ring.json'
-  };
-  return categoryMap[category] || null;
-}
-
-document.getElementById('searchButton').addEventListener('click', () => {
-  const nameQuery = document.getElementById('nameInput').value.toLowerCase();
-  const selectedCategories = Array.from(document.querySelectorAll('.checkbox-group input:checked'))
-    .map(input => input.value);
-
-  // 여러 개의 JSON 파일을 가져오는 Promise 배열 생성
-  const fetchPromises = selectedCategories.map(category => {
-    const jsonFilePath = getJsonFilePath(category);
-    if (jsonFilePath) {
-      return fetch(jsonFilePath)
-        .then(response => response.json())
-        .then(data => ({ category, data }))  // 데이터와 카테고리 함께 반환
-        .catch(error => {
-          console.error(`Failed to load ${category} JSON file`, error);
-          return { category, data: [] };
-        });
+    // 카테고리별 JSON 파일 경로 설정
+    function getJsonFilePath(category) {
+      const categoryMap = {
+        normal: 'CrystaData/normal.json',
+        weapon: 'CrystaData/weapon.json',
+        armor: 'CrystaData/armor.json',
+        enhanced_normal: 'CrystaData/enhanced_normal.json',
+        enhanced_weapon: 'CrystaData/enhanced_weapon.json',
+        enhanced_armor: 'CrystaData/enhanced_armor.json',
+        hat: 'CrystaData/hat.json',
+        enhanced_hat: 'CrystaData/enhanced_hat.json',
+        ring: 'CrystaData/ring.json',
+        enhanced_ring: 'CrystaData/enhanced_ring.json'
+      };
+      return categoryMap[category] || null;
     }
-    return Promise.resolve({ category, data: [] });  // 해당 카테고리 파일이 없을 경우 빈 배열 반환
-  });
 
-  // 모든 카테고리 JSON 파일 가져오기
-  Promise.all(fetchPromises)
-    .then(results => {
-      // 가져온 데이터를 하나로 병합
-      const mergedData = results.flatMap(result => result.data);
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const nameQuery = document.getElementById('nameInput').value.toLowerCase();
+      const selectedCategories = Array.from(document.querySelectorAll('.checkbox-group input:checked'))
+        .map(input => input.value);
 
-      // 필터링 (이름 검색)
-      const filteredData = mergedData.filter(item =>
-        (nameQuery === "" || item.name.toLowerCase().includes(nameQuery))
-      );
+      // 여러 개의 JSON 파일을 가져오는 Promise 배열 생성
+      const fetchPromises = selectedCategories.map(category => {
+        const jsonFilePath = getJsonFilePath(category);
+        if (jsonFilePath) {
+          return fetch(jsonFilePath)
+            .then(response => response.json())
+            .then(data => ({ category, data }))  // 데이터와 카테고리 함께 반환
+            .catch(error => {
+              console.error(`Failed to load ${category} JSON file`, error);
+              return { category, data: [] };
+            });
+        }
+        return Promise.resolve({ category, data: [] });  // 해당 카테고리 파일이 없을 경우 빈 배열 반환
+      });
 
-      // 결과 출력
-      const resultsDiv = document.getElementById('searchResults');
-      resultsDiv.innerHTML = filteredData.length > 0
-        ? filteredData.map(item => {
-            // 해당 아이템의 카테고리에 맞는 이미지 경로 찾기
-            const categoryImage = imageMap[results.find(r => r.data.includes(item)).category];
-            return `
-              <div class="crysta-item">
-                <h3>${item.name}</h3>
-                <p>${item.option}</p>
-                <img src="${categoryImage}" alt="${item.name}">
-              </div>`;
-          }).join('')
-        : '<p>검색 결과가 없습니다.</p>';
-    })
-    .catch(error => {
-      console.error('Error fetching JSON files:', error);
+      // 모든 카테고리 JSON 파일 가져오기
+      Promise.all(fetchPromises)
+        .then(results => {
+          // 가져온 데이터를 하나로 병합
+          const mergedData = results.flatMap(result => result.data);
+
+          // 필터링 (이름 검색)
+          const filteredData = mergedData.filter(item =>
+            (nameQuery === "" || item.name.toLowerCase().includes(nameQuery))
+          );
+
+          // 결과 출력
+          const resultsDiv = document.getElementById('searchResults');
+          resultsDiv.innerHTML = filteredData.length > 0
+            ? filteredData.map(item => {
+                // 해당 아이템의 카테고리에 맞는 이미지 경로 찾기
+                const categoryImage = imageMap[results.find(r => r.data.includes(item)).category];
+                return `
+                  <div class="crysta-item">
+                    <h3>${item.name}</h3>
+                    <p>${item.option}</p>
+                    <img src="${categoryImage}" alt="${item.name}">
+                  </div>`;
+              }).join('')
+            : '<p>검색 결과가 없습니다.</p>';
+        })
+        .catch(error => {
+          console.error('Error fetching JSON files:', error);
+        });
     });
-});
   </script>
 </body>
 </html>

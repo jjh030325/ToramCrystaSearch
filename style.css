@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.checkbox-group label {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checkbox-group input {
+    display: none;
+}
+.checkbox-group input:checked + label {
+    background: #4CAF50;
+    color: white;
+}
+input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 250px;
+}
+button {
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background: #45a049;
+}
+#searchResults {
+    margin-top: 20px;
+    width: 90%;
+    max-width: 600px;
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa;
+    padding: 10px;
+}
+.crysta-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.crysta-item:last-child {
+    border-bottom: none;
+}
+.crysta-item h3 {
+    margin: 0 0 5px;
+    color: #333;
+}
+.crysta-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+.crysta-item img {
+    max-width: 100px;
+    margin-top: 10px;
+}
