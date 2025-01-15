@@ -253,6 +253,10 @@
                 if (nextChar === '%') {
                   return false; // %가 있으면 제외
                 }
+
+                if (index-1 >= 0 && option[index-1]!=')' && option[index-1]!='&') {
+                  return false; // 앞글자가 )이나 &이 아닌경우 제외
+                }
   
                 // 기호에 맞는 비교 연산 수행
                 const numberValue = parseFloat(option.match(/([+-]?\d+(\.\d+)?)/)[0]);
