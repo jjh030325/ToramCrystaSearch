@@ -35,6 +35,11 @@
         "option":"ATK%+10&STR%+7&크리티컬률%+8&DEF%-27"
     },
     {
+        "name":"드레미나렐",
+        "enhance":"낙룡 레돌기",
+        "option":"ATK%+8&MATK%+8&최대HP+1000&최대MP+100"
+    },
+    {
         "name":"레퓨톤",
         "enhance":"조르반",
         "option":"ATK%+6&MATK%+6&HP자연회복%-10&MP자연회복%-10"
