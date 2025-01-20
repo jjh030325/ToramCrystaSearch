@@ -173,6 +173,8 @@
   <!-- 결과 출력 영역 -->
   <div id="searchResults"></div>
 
+  <button id="githubButton">업데이트 내역 확인</button>
+
   <script>
     // 카테고리별 이미지 매핑
     const imageMap = {
@@ -301,6 +303,9 @@
           console.error('Error fetching JSON files:', error);
         });
     });
+    document.getElementById("githubButton").addEventListener("click", function () {
+    window.open("https://github.com/jjh030325/ToramCrystaSearch", "_blank");
+  });
   </script>
 </body>
 </html>
