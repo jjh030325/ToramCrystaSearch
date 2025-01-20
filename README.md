@@ -3,13 +3,11 @@
 서비스 링크 : (https://asicrystasearch.netlify.app/)
 
 <br/>
-<br/>
 
 # 1. Project Overview (프로젝트 개요)
 - 프로젝트 이름: ToramCrystaSearch
-- 프로젝트 설명: 토람온라인이라는 게임의 크리스타라는 아이템 검색 웹 서비스입니다. 기존에도 크리스타 검색기는 존재하였으나 몇 년간 업데이트가 없어 최신 크리스타 검색이 불가능하다는 문제점이 존재하였습니다. 때문에 이후로도 꾸준히 활용될 수 있도록 해당 크리스타 검색기에서 영감을 받아 해당 프로젝트를 시작하게 되었습니다.
+- 프로젝트 설명: 토람온라인이라는 게임의 크리스타라는 아이템 검색 웹 서비스입니다. 기존에도 크리스타 검색기는 존재하였으나 몇 년간 업데이트가 없어 최신 크리스타 검색이 불가능하다는 문제점이 존재하였습니다. 때문에 이후로도 꾸준히 활용될 수 있도록 해당 크리스타 검색기에서 영감을 받아 해당 프로젝트를 시작하게 되었습니다. 깃허브에 업로드되어도 업데이트된 내역이 디플로이되기까지 약간의 시간이 소요됩니다. 불편이 없도록 최대한 빠르게 적용하도록 하겠습니다. 
 
-<br/>
 <br/>
 
 # 2. Key Features (주요 기능)
@@ -36,7 +34,6 @@
 | CSS    |   <img src="https://github.com/user-attachments/assets/c531b03d-55a3-40bf-9195-9ff8c4688f13" alt="CSS" width="100">|
 | Javascript    |  <img src="https://github.com/user-attachments/assets/4a7d7074-8c71-48b4-8652-7431477669d1" alt="Javascript" width="100"> | 
 
-<br/>
 <br/>
 
 # 4. Project Structure (프로젝트 구조)
@@ -69,7 +66,6 @@ project/
 └── README.md                   # 프로젝트 개요
 ```
 
-<br/>
 <br/>
 
 # 5. Reference (참고)
