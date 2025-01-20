@@ -1,8 +1,6 @@
-<br/>
-<br/>
 
 # 0. 서비스 URL 주소
-[서비스 링크](https://asicrystasearch.netlify.app/)
+서비스 링크 : (https://asicrystasearch.netlify.app/)
 
 <br/>
 <br/>
