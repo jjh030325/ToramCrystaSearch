@@ -5,6 +5,11 @@
         "option":"공격MP회복+6&최대HP+1000"
     },
     {
+        "name":"드미나레돌",
+        "enhance":"라르바다",
+        "option":"ATK%+8&MATK%+8&공격속도%+20&장판경감%+20"
+    },
+    {
         "name":"라르바다",
         "enhance":"오르그",
         "option":"ATK%+4&MATK%+4&DEF%-4&MDEF%-4"
