@@ -34,6 +34,32 @@
 | CSS    |   <img src="https://github.com/user-attachments/assets/c531b03d-55a3-40bf-9195-9ff8c4688f13" alt="CSS" width="100">|
 | Javascript    |  <img src="https://github.com/user-attachments/assets/4a7d7074-8c71-48b4-8652-7431477669d1" alt="Javascript" width="100"> | 
 
+## 3.2 Data Format (데이터 포맷)
+- 해당 프로젝트는 데이터를 JSON 파일로 관리합니다. 어느 부위에 착용할 수 있는 크리스타인지 종류별로 JSON 파일이 분류되어있고, 추가적으로 강화 크리스타와 일반 크리스타로 분류됩니다.
+- 일반 크리스타들은 아래와 같은 형식을 가집니다.
+```json
+{
+    "name":"가나마나",
+    "option":"최대HP+3000&물리내성%+3&마법내성%+3&근거리위력%+6&어그로%+15"
+}
+```
+
+- 강화 크리스타들은 아래와 같은 형식을 가집니다.
+
+```json
+{
+    "name":"가람므와",
+    "enhance":"바위용 펠젠",
+    "option":"최대HP+6000&무기ATK%+6"
+}
+```
+
+- **`name`**: 크리스타 이름 (문자열)
+- **`enhance`**: 강화 크리스타인 경우 이전 크리스타 이름 (문자열)
+- **`option`**: 옵션 및 수치 (문자열)
+  - 형식:**`옵션명+수치&옵션명+수치`**
+  - 해당 문자열은 파싱하여 사용됩니다.
+
 <br/>
 
 # 4. Project Structure (프로젝트 구조)
