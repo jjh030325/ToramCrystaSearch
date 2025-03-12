@@ -45,6 +45,11 @@
         "option":"ATK%+8&MATK%+8&최대HP+1000&최대MP+100"
     },
     {
+        "name":"디알크",
+        "enhance":"알머이트",
+        "option":"MATK%+8&마법관통%+20&시전속도%-16"
+    },
+    {
         "name":"레퓨톤",
         "enhance":"조르반",
         "option":"ATK%+6&MATK%+6&HP자연회복%-10&MP자연회복%-10"
