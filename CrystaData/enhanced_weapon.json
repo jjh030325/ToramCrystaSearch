@@ -75,6 +75,11 @@
         "option":"MATK%+6&DEX%+4&시전속도%+2"
     },
     {
+        "name":"바쿠잔",
+        "enhance":"기룡 미뮤가",
+        "option":"ATK%+11&DEX%+9&공격속도%+7"
+    },
+    {
         "name":"발터",
         "enhance":"튤란 마키나",
         "option":"ATK%+7&DEX%+5&공격속도%+3"
