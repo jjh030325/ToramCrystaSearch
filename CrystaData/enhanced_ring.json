@@ -15,6 +15,11 @@
         "option":"ATK%+4&MATK%+4&DEF%-4&MDEF%-4"
     },
     {
+        "name":"리틀 해머",
+        "enhance":"크리스탈 타이탄",
+        "option":"최대HP+3000&최대HP%+20&비율배리어%+15&ATK업VIT25%"
+    },
+    {
         "name":"메메콜레오우스",
         "enhance":"스톤마세",
         "option":"Guard회복%+5&어그로%+12&ATK%-4"
