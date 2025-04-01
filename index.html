@@ -294,6 +294,7 @@
                   <div class="crysta-item">
                     <h3>${item.name}</h3>
                     <p>${item.option}</p>
+                    ${item.enhance ? `<p><strong>강화 대상:</strong> ${item.enhance}</p>` : ''}
                     <img src="${categoryImage}" alt="${item.name}">
                   </div>`; 
               }).join('') 
