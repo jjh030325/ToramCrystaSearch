@@ -55,6 +55,11 @@
         "option":"ATK%+6&MATK%+6&HP자연회복%-10&MP자연회복%-10"
     },
     {
+        "name":"론디네",
+        "enhance":"악룡 파지노",
+        "option":"MATK%+11&DEX%+9&시전속도%+7"
+    },
+    {
         "name":"마르둘라",
         "enhance":"이미터베이트",
         "option":"ATK%+7&공격MP회복+4&예측%+12"
