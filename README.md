@@ -96,3 +96,8 @@ project/
 
 # 5. Reference (참고)
 - 크리스타 이미지 데이터와 옛날부터 존재하던 크리스타 데이터 참고 : (https://github.com/toramcalculator/crysta)
+
+<br/>
+
+# 6. Finish (프로젝트 완료 : 2025-01~2026-01)
+- 프로젝트 양도 : (https://github.com/patohsh/Toram_KR)
